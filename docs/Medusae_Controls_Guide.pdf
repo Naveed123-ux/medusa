@@ -1,0 +1,702 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Count 7 /Kids [5 0 R 7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R] >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Length 2407 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+14 TL
+(Medusae Controls Guide \(Detailed\)) Tj
+T*
+() Tj
+T*
+(This document explains every control shown in the settings panel for the Medusae renderer and) Tj
+T*
+(what each one changes visually.) Tj
+T*
+() Tj
+T*
+(Source locations used:) Tj
+T*
+(- src/data/settingsConfig.js \(controls shown in the UI\)) Tj
+T*
+(- packages/medusae/src/defaults.js \(default values\)) Tj
+T*
+(- packages/medusae/src/Medusae.jsx \(actual behavior in shader + cursor follow logic\)) Tj
+T*
+() Tj
+T*
+(Important distinction:) Tj
+T*
+(- Some controls change how far things move \(amplitude/strength\).) Tj
+T*
+(- Some controls change how fast things move \(frequency/speed/drag response\).) Tj
+T*
+(- Some controls change shape only \(width/height/size/color\).) Tj
+T*
+() Tj
+T*
+(CURSOR CONTROLS) Tj
+T*
+() Tj
+T*
+(1\) Hover Radius \(cursor.radius\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Sets the radius of the cursor jitter orbit used when hovering. The cursor target is not) Tj
+T*
+(  perfectly still; it is animated with a small wobble around the actual pointer.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher values make the interaction zone wobble farther around the cursor.) Tj
+T*
+(- The particle field appears to swirl around a larger moving target.) Tj
+T*
+(What it does NOT do:) Tj
+T*
+(- It does not directly increase particle size.) Tj
+T*
+(- It does not directly increase response speed.) Tj
+T*
+() Tj
+T*
+(2\) Hover Strength \(cursor.strength\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Multiplies the jitter offset added around the cursor target.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher values make the hover motion more dramatic and energetic.) Tj
+T*
+(- The cursor influence point moves farther from the pointer during the wobble animation.) Tj
+T*
+(When to increase:) Tj
+T*
+(- If you want more expressive cursor motion without changing smoothing.) Tj
+T*
+() Tj
+T*
+(3\) Drag Factor \(cursor.dragFactor\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Controls how quickly the internal mouse uniform \(uMouse\) catches up to the target cursor) Tj
+T*
+(  position using interpolation.) Tj
+T*
+(- The code effectively does: current += \(target - current\) * dragFactor) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher values = faster, snappier cursor tracking.) Tj
+T*
+(- Lower values = smoother, laggier, floatier follow behavior.) Tj
+T*
+(This is the main ?speed with cursor? control.) Tj
+T*
+(Typical tuning guidance:) Tj
+T*
+(- 0.01 to 0.02 = soft / delayed) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 2182 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+14 TL
+(- 0.03 to 0.06 = responsive) Tj
+T*
+(- >0.08 = quite snappy and may feel less fluid) Tj
+T*
+() Tj
+T*
+(HALO CONTROLS) Tj
+T*
+() Tj
+T*
+(The halo is the jellyfish-like ring around the cursor that pushes and activates particles.) Tj
+T*
+(These settings mainly affect the ring shape and surrounding oscillation.) Tj
+T*
+() Tj
+T*
+(4\) Outer Osc Frequency \(halo.outerOscFrequency\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Sets the speed of the outer oscillation wave over time.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value = faster pulsing/rippling motion in the outer region.) Tj
+T*
+(Tradeoff:) Tj
+T*
+(- Too high can look noisy or twitchy compared with the softer ?breathing? feel.) Tj
+T*
+() Tj
+T*
+(5\) Outer Osc Strength \(halo.outerOscAmplitude\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Sets how much the outer oscillation displaces particles in the outer region.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value = stronger ripple push outside the main halo rim.) Tj
+T*
+(Tradeoff:) Tj
+T*
+(- Too high can overpower the halo rim effect and reduce the subtle jellyfish feel.) Tj
+T*
+() Tj
+T*
+(6\) Outer Osc Jitter Strength \(halo.outerOscJitterStrength\)) Tj
+T*
+(Status:) Tj
+T*
+(- Present in the UI and defaults, but currently NOT wired into the renderer logic in) Tj
+T*
+(  packages/medusae/src/Medusae.jsx.) Tj
+T*
+(What that means:) Tj
+T*
+(- Changing this slider currently has no visible effect.) Tj
+T*
+() Tj
+T*
+(7\) Outer Osc Jitter Speed \(halo.outerOscJitterSpeed\)) Tj
+T*
+(Status:) Tj
+T*
+(- Present in the UI and defaults, but currently NOT wired into the renderer logic in) Tj
+T*
+(  packages/medusae/src/Medusae.jsx.) Tj
+T*
+(What that means:) Tj
+T*
+(- Changing this slider currently has no visible effect.) Tj
+T*
+() Tj
+T*
+(8\) Radius Base \(halo.radiusBase\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Sets the base radius of the halo ring around the cursor.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value = larger halo ring \(the active band forms farther from the cursor center\).) Tj
+T*
+(Use case:) Tj
+T*
+(- Increase this when you want a wider interaction footprint without making it stronger.) Tj
+T*
+() Tj
+T*
+(9\) Radius Amplitude \(halo.radiusAmplitude\)) Tj
+T*
+(What it does:) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 2199 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+14 TL
+(- Controls how much the halo radius expands/contracts with the breathing cycle.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value = more obvious breathing / pulsing size change.) Tj
+T*
+(Tradeoff:) Tj
+T*
+(- Too high can make the ring feel unstable rather than organic.) Tj
+T*
+() Tj
+T*
+(10\) Shape Amplitude \(halo.shapeAmplitude\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Adds irregular/noise-based deformation to the halo edge.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value = rougher, less circular halo shape.) Tj
+T*
+(- Lower value = smoother, cleaner ring.) Tj
+T*
+(Use case:) Tj
+T*
+(- Raise it for a more alive / organic membrane look.) Tj
+T*
+() Tj
+T*
+(11\) Rim Width \(halo.rimWidth\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Controls the thickness/softness of the halo rim influence band via a smoothstep around the) Tj
+T*
+(  current halo radius.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value = broader active rim \(more particles affected around the ring\).) Tj
+T*
+(- Lower value = tighter, thinner ring activation band.) Tj
+T*
+(Practical impact:) Tj
+T*
+(- Strongly affects how much of the scene lights up and grows near the halo.) Tj
+T*
+() Tj
+T*
+(12\) Outer Start Offset \(halo.outerStartOffset\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Defines where the outer oscillation influence begins relative to the base halo radius.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value pushes the start of outer ripples farther away from the main ring.) Tj
+T*
+(Use case:) Tj
+T*
+(- Good for separating the core halo and outer ripple region.) Tj
+T*
+() Tj
+T*
+(13\) Outer End Offset \(halo.outerEndOffset\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Defines where outer oscillation influence reaches full effect \(with smoothstep) Tj
+T*
+(  interpolation\).) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Changes the width of the transition area for outer ripples.) Tj
+T*
+(- Larger gap between start/end offsets = broader, softer outer ripple zone.) Tj
+T*
+() Tj
+T*
+(14\) Halo Width \(halo.scaleX\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Horizontal scaling of halo distance calculation.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value stretches the halo wider left-right.) Tj
+T*
+(- Lower value compresses the halo horizontally.) Tj
+T*
+(Notes:) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 2039 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+14 TL
+(- This changes the shape of the influence region, not particle sprite shape.) Tj
+T*
+() Tj
+T*
+(15\) Halo Height \(halo.scaleY\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Vertical scaling of halo distance calculation.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value stretches the halo taller up-down.) Tj
+T*
+(- Lower value compresses the halo vertically.) Tj
+T*
+(Tip:) Tj
+T*
+(- Adjust together with Halo Width to make the interaction feel round, oval, or flattened.) Tj
+T*
+() Tj
+T*
+(PARTICLE CONTROLS) Tj
+T*
+() Tj
+T*
+(These affect individual particle appearance, rotation behavior, and how strongly the field) Tj
+T*
+(follows the cursor target.) Tj
+T*
+() Tj
+T*
+(16\) Base Color \(particles.colorBase\)) Tj
+T*
+(What it does:) Tj
+T*
+(- The base/resting color used for particles when they are less activated by the halo \(low) Tj
+T*
+(  vSize\).) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Dominates inactive areas of the particle field.) Tj
+T*
+() Tj
+T*
+(17\) Color 1 \(particles.colorOne\)) Tj
+T*
+(18\) Color 2 \(particles.colorTwo\)) Tj
+T*
+(19\) Color 3 \(particles.colorThree\)) Tj
+T*
+(What they do:) Tj
+T*
+(- These three colors are blended in the fragment shader to create the active animated color) Tj
+T*
+(  gradients.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Active halo regions shift across this palette over time.) Tj
+T*
+(Notes:) Tj
+T*
+(- The labels are generic, but by default they are blue/red/yellow style accents.) Tj
+T*
+() Tj
+T*
+(20\) Base Size \(particles.baseSize\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Default particle size before halo activation boosts size.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Raises/lower overall particle presence even when far from the halo rim.) Tj
+T*
+(Tradeoff:) Tj
+T*
+(- Too large can make the scene feel dense and muddy.) Tj
+T*
+() Tj
+T*
+(21\) Active Size \(particles.activeSize\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Extra size contribution applied in active halo regions \(scaled by rim influence\).) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value makes particles ?bloom? larger when activated.) Tj
+T*
+(Use case:) Tj
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 2180 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+14 TL
+(- Increase to make the halo interaction more dramatic and readable.) Tj
+T*
+() Tj
+T*
+(22\) Blob Width \(particles.blobScaleX\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Horizontal scale of the particle sprite geometry after size is computed.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value = wider particle blobs.) Tj
+T*
+(- Lower value = narrower particles.) Tj
+T*
+() Tj
+T*
+(23\) Blob Height \(particles.blobScaleY\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Vertical scale of the particle sprite geometry after size is computed.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value = taller blobs.) Tj
+T*
+(- Lower value = flatter/squashed blobs.) Tj
+T*
+(Tip:) Tj
+T*
+(- Blob Width + Blob Height together define the particle aspect ratio.) Tj
+T*
+() Tj
+T*
+(24\) Rotation Speed \(particles.rotationSpeed\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Sets the time-driven speed of particle orientation jitter/rotation in the vertex shader.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value = faster directional flutter/twist in the particles.) Tj
+T*
+(Notes:) Tj
+T*
+(- This affects rotational behavior, not cursor follow speed.) Tj
+T*
+() Tj
+T*
+(25\) Rotation Jitter \(particles.rotationJitter\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Controls the magnitude of angular jitter added perpendicular to the radial direction.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value = more chaotic, wavy, less stable orientation.) Tj
+T*
+(- Lower value = cleaner alignment.) Tj
+T*
+(Tradeoff:) Tj
+T*
+(- Too much can make the particle field look noisy rather than fluid.) Tj
+T*
+() Tj
+T*
+(26\) Cursor Follow Strength \(particles.cursorFollowStrength\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Multiplies the cursor target position before it is applied to the internal mouse uniform) Tj
+T*
+(  target.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value = particles react over a larger movement range \(more displacement from cursor) Tj
+T*
+(  motion\).) Tj
+T*
+(Important distinction:) Tj
+T*
+(- This mostly changes movement amount/range, not the smoothing rate.) Tj
+T*
+(- Pair with Drag Factor if you want stronger AND faster cursor interaction.) Tj
+T*
+() Tj
+T*
+(27\) Oscillation Factor \(particles.oscillationFactor\)) Tj
+T*
+(What it does:) Tj
+ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 2096 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+14 TL
+(- Scales internal modulation used for particle rotation oscillation timing and intensity.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Higher value = more active, varied, lively particle motion.) Tj
+T*
+(- Lower value = calmer, steadier behavior.) Tj
+T*
+(Notes:) Tj
+T*
+(- This affects internal animation character, not the halo radius itself.) Tj
+T*
+() Tj
+T*
+(BACKGROUND CONTROL) Tj
+T*
+() Tj
+T*
+(28\) Page Color \(background.color\)) Tj
+T*
+(What it does:) Tj
+T*
+(- Sets the page background color in src/App.jsx.) Tj
+T*
+(- Also sets the Three.js canvas background color in packages/medusae/src/Medusae.jsx.) Tj
+T*
+(Visual effect:) Tj
+T*
+(- Changes both the surrounding page and the canvas backdrop together.) Tj
+T*
+() Tj
+T*
+(PRACTICAL TUNING RECIPES) Tj
+T*
+() Tj
+T*
+(A\) Faster cursor response \(snappier\)) Tj
+T*
+(- Increase Drag Factor first.) Tj
+T*
+(- Optionally increase Cursor Follow Strength a little.) Tj
+T*
+(- Keep Hover Strength moderate if motion becomes too chaotic.) Tj
+T*
+() Tj
+T*
+(B\) Bigger interaction effect \(more dramatic\) without making it twitchy) Tj
+T*
+(- Increase Active Size.) Tj
+T*
+(- Increase Rim Width.) Tj
+T*
+(- Increase Cursor Follow Strength.) Tj
+T*
+(- Avoid increasing Drag Factor too much if you still want a floaty look.) Tj
+T*
+() Tj
+T*
+(C\) Softer / more elegant jellyfish feel) Tj
+T*
+(- Lower Rotation Jitter.) Tj
+T*
+(- Use moderate Outer Osc Strength.) Tj
+T*
+(- Keep Shape Amplitude moderate.) Tj
+T*
+(- Use lower Drag Factor for smooth lag.) Tj
+T*
+() Tj
+T*
+(D\) More chaotic / energetic effect) Tj
+T*
+(- Increase Rotation Speed and Rotation Jitter.) Tj
+T*
+(- Increase Oscillation Factor.) Tj
+T*
+(- Increase Outer Osc Frequency \(carefully\).) Tj
+T*
+(- Increase Hover Strength for stronger cursor wobble.) Tj
+T*
+() Tj
+T*
+(IMPLEMENTATION NOTE \(Current Limitation\)) Tj
+T*
+() Tj
+T*
+(Two Halo controls are currently exposed but not connected to the shader/runtime:) Tj
+T*
+(- halo.outerOscJitterStrength) Tj
+T*
+(- halo.outerOscJitterSpeed) Tj
+T*
+() Tj
+T*
+(If you want, these can be wired into the outer oscillation code so they add a second) Tj
+ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 14 0 R >>
+endobj
+16 0 obj
+<< /Length 125 >>
+stream
+BT
+/F1 11 Tf
+54 738 Td
+14 TL
+(jitter/noise layer to the outer ripple motion.) Tj
+T*
+() Tj
+T*
+(Generated on: 2026-02-26) Tj
+ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 16 0 R >>
+endobj
+xref
+0 18
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000161 00000 n 
+0000000231 00000 n 
+0000002690 00000 n 
+0000002816 00000 n 
+0000005050 00000 n 
+0000005176 00000 n 
+0000007427 00000 n 
+0000007553 00000 n 
+0000009645 00000 n 
+0000009773 00000 n 
+0000012006 00000 n 
+0000012134 00000 n 
+0000014283 00000 n 
+0000014411 00000 n 
+0000014588 00000 n 
+trailer
+<< /Size 18 /Root 1 0 R >>
+startxref
+14716
+%%EOF
